@@ -1,15 +1,22 @@
 import javax.swing.*;
-public class DateInfo {
+@SuppressWarnings("serial")
+public class DateInfo extends JFrame{
 
-	public DateInfo()
+	String t = "";
+
+	public DateInfo(String s)
 	{   
+	
 		
-		JFrame frame2 = new JFrame("Info");
-		frame2.setEnabled(true);
-		frame2.setVisible(true);
-		frame2.setSize(500,500);
-		frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame2.setLocationRelativeTo(null);
+		this.t=s;
+		
+		
+		new JFrame(t);
+		setEnabled(true);
+		setVisible(true);
+		setSize(750,750);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
 		
 	}
 	

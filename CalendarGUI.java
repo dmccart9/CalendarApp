@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
-public class CalendarGUI {
+@SuppressWarnings("serial")
+public class CalendarGUI extends JFrame implements ActionListener{
 
 	static String[] months = new String[12];
 	static String[] days = new String[7];
@@ -19,21 +21,21 @@ public class CalendarGUI {
 	
 public CalendarGUI()
 {
-	JFrame frame1 = new JFrame("Calendar");
 	
+	new JFrame("Calendar");
 	
-	frame1.setEnabled(true);
-	frame1.setVisible(true);
-	frame1.setSize(1050,750);
-	frame1.setBackground(Color.BLACK);
-	frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame1.setLocationRelativeTo(null);
+	setEnabled(true);
+	setVisible(true);
+	setSize(1050,750);
+	setBackground(Color.BLACK);
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	setLocationRelativeTo(null);
 
 	addButtons();
 	panel1.setLayout(new GridLayout(5,7));
 	panel2.setLayout(new BorderLayout());
 	panel2.add(panel1,BorderLayout.CENTER);
-	frame1.getContentPane().add(panel2);
+	getContentPane().add(panel2);
 	}
 	
 	
@@ -43,16 +45,22 @@ public void addButtons()
 	{
 		for(int l=0;l<7;l++)
 		{
-    
+		
 			manybuttons[r][l] = new JButton(days[l]);
-			manybuttons[r][l].addActionListener(new ActionListener() {
+			manybuttons[r][l].addActionListener(this);
+					
+					/*.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent event){
+			
 			new DateInfo();
+			
+			
 		}
-	});
-	
-			panel1.add(manybuttons[r][l]);
+	});*/
+	        manybuttons[r][l].setFont(new Font("Arial",Font.PLAIN,20));
+			
+	        panel1.add(manybuttons[r][l]);
 	
 	}
 	  
@@ -71,6 +79,20 @@ public CalendarGUI(String[] month,String[] day)
 		CalendarGUI.days[j]=day[j];
 	} 
 	  }
+
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	
+	for(int w=0;w<days.length;w++)
+	
+		if (e.getSource()==days[w])
+	{
+		new DateInfo(days[w]);
+		
+	}
+	
+}
 			
 }
 
