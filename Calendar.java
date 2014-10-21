@@ -3,7 +3,8 @@ public class Calendar {
 
     static String[]months = new String[12];
 	static String[]days = new String[7];
-	
+	int currentMonth = 0;
+	int currentDay = 0;
 	
 	public Calendar()
 	{
@@ -28,10 +29,14 @@ public class Calendar {
 	{
 		
 		
-		return months[1];
+		return months[currentMonth];
 		
 	}
-
+public void setMonth(int s)
+{
+	this.currentMonth = s;
+	
+}
 
 }
 

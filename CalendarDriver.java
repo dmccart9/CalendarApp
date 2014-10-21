@@ -32,12 +32,7 @@ public class CalendarDriver {
 		 new Calendar(months,days);
 		 new CalendarGUI();
 		 
-		 //Calendar y = new Calendar();
-		
-		//String b = "";
-		
-		//b = y.getMonth();
-		//System.out.println(b);
+	
 		
 		
 		 
