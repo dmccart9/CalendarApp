@@ -1,5 +1,5 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -9,7 +9,7 @@ import javax.swing.*;
 
 
 @SuppressWarnings("serial")
-public class CalendarGUI extends JFrame implements ActionListener{
+public class CalendarGUI extends JFrame implements ActionListener {
 
 	static String[] months = new String[12];
 	static String[] days = new String[7];
@@ -17,25 +17,30 @@ public class CalendarGUI extends JFrame implements ActionListener{
 	JPanel panel1 = new JPanel();
 	JPanel panel2 = new JPanel();
 	JPanel panel3 = new JPanel();
+
 	
 	
 public CalendarGUI()
 {
 	
-	new JFrame("Calendar");
+	new JFrame();
 	
-	setEnabled(true);
-	setVisible(true);
+	
 	setSize(1050,750);
-	setBackground(Color.BLACK);
+	
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setLocationRelativeTo(null);
-
+	setTitle("Calendar");
 	addButtons();
+	panel3.setLayout(new BorderLayout());
 	panel1.setLayout(new GridLayout(5,7));
 	panel2.setLayout(new BorderLayout());
 	panel2.add(panel1,BorderLayout.CENTER);
 	getContentPane().add(panel2);
+	setEnabled(true);
+	setVisible(true);
+	
+	
 	}
 	
 	
@@ -81,20 +86,20 @@ public CalendarGUI(String[] month,String[] day)
 	  }
 
 
-@Override
 public void actionPerformed(ActionEvent e) {
 	
-	for(int w=0;w<days.length;w++)
-	
-		if (e.getSource()==days[w])
+	for(int k=0;k<5;k++)
 	{
-		new DateInfo(days[w]);
+		for(int z=0;z<7;z++)
+		{
+	if(e.getSource()==manybuttons[k][z]){
 		
-	}
+	new DateInfo(days[z]);
 	
+	                                    }
+	    }
+	}
+                                           }
+
+
 }
-			
-}
-
-
-

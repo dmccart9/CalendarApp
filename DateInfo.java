@@ -11,12 +11,13 @@ public class DateInfo extends JFrame{
 		this.t=s;
 		
 		
-		new JFrame(t);
-		setEnabled(true);
-		setVisible(true);
+		new JFrame();
+		setTitle(t);
 		setSize(750,750);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
+		setEnabled(true);
+		setVisible(true);
 		
 	}
 	
