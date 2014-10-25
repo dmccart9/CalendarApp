@@ -28,9 +28,13 @@ public class CalendarDriver {
 		days[4] = "Thursday";
 		days[5] = "Friday";
 		days[6] = "Saturday";
+		
+		
 		 new CalendarGUI(months,days);
-		 new Calendar(months,days);
+		 new Keeptime(months,days);
 		 new CalendarGUI();
+	
+		 
 		 
 	
 		
