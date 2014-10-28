@@ -15,8 +15,8 @@ public class Keeptime {
 	
 	public Keeptime()
 	{
-		int r = 0;
 		
+		//using DateFormat to get data from Calendar class
 		DateFormat dateFormat = new SimpleDateFormat("w");
 		DateFormat dateFormat2 = new SimpleDateFormat("u");
 		DateFormat dateFormat3 = new SimpleDateFormat("W");
@@ -24,23 +24,27 @@ public class Keeptime {
 		DateFormat dateFormat5 = new SimpleDateFormat("y");
 		Calendar cal = Calendar.getInstance();
 		
+		//getting time variables
 	    String x = dateFormat.format(cal.getTime());
 	    String b = dateFormat2.format(cal.getTime());
 	    String rar = dateFormat3.format(cal.getTime());
 	    String dom = dateFormat4.format(cal.getTime());
 	    String year = dateFormat5.format(cal.getTime());
 	    
-	    
+	   //converting them to integers
 	     int d = Integer.parseInt(dom);
 	     int c = Integer.parseInt(rar);
-	     int y = Integer.parseInt(x);
-	     int w = Integer.parseInt(b);
-	     r = (y/4)-1;
-	   Keeptime.currentMonth = r;
+	     int y = ((Integer.parseInt(x))/(4))-2;
+	     int w = ((Integer.parseInt(b))-1);
+	   
+	 //setting class variables
+	   Keeptime.currentMonth = y;
 	   Keeptime.currentDay = w;
 	   Keeptime.currentWeekofMonth = (c-1);
 	   Keeptime.currentDayofMonth = d;
 	   Keeptime.currentYear = year;
+	   
+	  //System.out.println(w);
 	   
 	   
 	   
@@ -100,7 +104,32 @@ public void Dayplus()
 }
 public int getNumDay()
 {
-	return currentDay;
+	
+	if(currentDay==0){
+		return 1;
+       }
+	if(currentDay==1){
+		return 2;
+       }
+	if(currentDay==2){
+		return 3;
+	   }
+	if(currentDay==3){
+		return 4;
+	}
+	if(currentDay==4){
+		return 5;
+	}
+	if(currentDay==5){
+		return 6;
+	}
+	if(currentDay==6){
+		return 0;
+	}
+	else{
+		return 0;
+	}
+
 }
 public int getCurrentWeek()
 {
