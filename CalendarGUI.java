@@ -21,9 +21,11 @@ public class CalendarGUI extends JFrame implements ActionListener {
 	static int monthTracker=0;
 	static int dateDayIndex=0;
 	static int oneTime=0;
+	static int btnPlcmntCounter=3;
 	
 	
-	JButton[][] manybuttons = new JButton[5][7];
+	
+	JButton[][] manybuttons = new JButton[6][7];
 	JPanel panel1 = new JPanel();
 	JPanel panel2 = new JPanel();
 	JButton b3 = new JButton();
@@ -56,12 +58,12 @@ public CalendarGUI()
 	new JFrame();
 	
 	
-	setSize(1050,750);
+	setSize(1100,800);
 	
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setLocationRelativeTo(null);
 	setTitle("Calendar");
-	panel1.setLayout(new GridLayout(5,7));
+	panel1.setLayout(new GridLayout(6,7));
 	addButtons();
 	
 	panel2.setLayout(new BorderLayout());
@@ -72,6 +74,7 @@ public CalendarGUI()
 	getContentPane().add(panel2);
 	setEnabled(false);
 	setVisible(false);
+	monthTracker++;
 	
 }
 	
@@ -79,90 +82,81 @@ public CalendarGUI()
 public void addButtons()
 {
 	b3.setPreferredSize(new Dimension(500,100));
-	//b3.setText(days[0] + ", " + months[0] + " " + dateDay[] + ", " + cld.getYear());
+	b3.setText(months[monthTracker]);
 	b3.setBackground(Color.white);
 	b3.addActionListener(this);
 	b3.setToolTipText("Month Summary");
 	
-	
-	for(int r=0;r<5;r++)
+	int cr=0;
+	for(int r=0;r<6;r++)
 	{
 		for(int l=0;l<7;l++)
 		{
-			if(l<3 && r==0 && CalendarGUI.oneTime<3)
+			int k=0;
+			
+			if(dateDay[dateDayIndex]==1 && r>=4)
+			{
+			
+				if(cr==0){
+              btnPlcmntCounter=l;
+				cr++;}
+						manybuttons[r][l]=new JButton();
+						manybuttons[r][l].addActionListener(this);
+				        manybuttons[r][l].setFont(new Font("Arial",Font.PLAIN,20));
+				        manybuttons[r][l].setEnabled(false);
+				        panel1.add(manybuttons[r][l]);
+				        
+				        k++;
+		    }
+              
+	    	
+			if(k != 0)
+				continue;
+			
+			
+			
+			if(l<btnPlcmntCounter && r==0)
 			{
 				manybuttons[r][l]=new JButton();
 				manybuttons[r][l].addActionListener(this);
 		        manybuttons[r][l].setFont(new Font("Arial",Font.PLAIN,20));
-		        CalendarGUI.oneTime++;
-				
-			}else {
-				manybuttons[r][l] = new JButton(String.valueOf(dateDay[dateDayIndex]));
-				manybuttons[r][l].addActionListener(this);
-		        manybuttons[r][l].setFont(new Font("Arial",Font.PLAIN,20));
-		       
-		    	if(dateDay[dateDayIndex]==1 && r>1)
-				{
-					int temp=r;
-					while(temp<5){
-						for(int temp2=l;temp2<7;temp2++){
-							manybuttons[temp][temp2]=new JButton();
-							manybuttons[temp][temp2].addActionListener(this);
-					        manybuttons[temp][temp2].setFont(new Font("Arial",Font.PLAIN,20));
-							
-						}
-						
-						return;
-					}
-				}
-		        
-		        
-		        
-		        dateDayIndex++;
-		        System.out.println(dateDayIndex);
+		        manybuttons[r][l].setEnabled(false);
 		        
 			}
-			
-			
-			
-		
-				
-	        int y = 0;
-	        int x = 0;
-	        y = cld.getCurrentWeek();
-	        x = cld.getNumDay();
-	        
-	       if(manybuttons[r][l]==manybuttons[y][x])
-	        		{
-	  
-	    	   manybuttons[r][l].setBackground(Color.yellow);
-	    	   
-	        		}else
-	        			manybuttons[r][l].setBackground(Color.white);
-			
-	        panel1.add(manybuttons[r][l]);
+		     else{
+		    manybuttons[r][l] = new JButton(String.valueOf(dateDay[dateDayIndex]));
+			manybuttons[r][l].addActionListener(this);
+	        manybuttons[r][l].setFont(new Font("Arial",Font.PLAIN,20));
+	        colorButton(r,l);
+	        dateDayIndex++;
+		     }
+		     panel1.add(manybuttons[r][l]);
 	        
 	  
-	   
 	}
-	  
-  }
-	  /*if(cld.getMonth().equals(months[9]));
-      {
-    	  manybuttons[4][6].setEnabled(false);
-   	   for(int cs=0;cs<1;cs++)
-   	   {
-   		   for(int q=0;q<=2;q++)
-   		   {
-   			   manybuttons[cs][q].setEnabled(false);
-   		   }
-   	   }
-      }*/
+	
+	   }
+	
 	
 }
 
-public CalendarGUI(String[] month,String[] day)
-{
+
+public void colorButton(int r, int l)
+{   
+	int y = 0;
+    int x = 0;
+    y = cld.getCurrentWeek();
+    x = cld.getNumDay();
+    System.out.println(y);
+    System.out.println(x);
+    
+   if(manybuttons[r][l]==manybuttons[y][x])
+    		{
+
+	   manybuttons[r][l].setBackground(Color.yellow);
+	   
+    		}else
+    			manybuttons[r][l].setBackground(Color.white);
 	 
 	  }
 public void actionPerformed(ActionEvent e) {

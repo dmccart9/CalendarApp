@@ -50,20 +50,7 @@ public class CalendarDriver {
 	
 	    populate();
 	    CalendarDriver.dates[365] = 1;
-	   
-		
-		/*for(int r=0;r<365;r++){
-			System.out.println(CalendarDriver.dates[r]);
-			System.out.println(dates.length);
-			
-		}*/
-		
-	   System.out.println(CalendarDriver.dates[364]);
-	
-	
-		
-	
-		
+	    
 	    new Keeptime(months,formatDays); //start Keeping time
 		new CalendarGUI(months,days,CalendarDriver.dates);
 	    
@@ -72,8 +59,9 @@ public class CalendarDriver {
 	    	manyGUIs[w].setVisible(true);
 	    	manyGUIs[w].setEnabled(true);
 	    	}
-	    
-	
+	   // manyGUIs[Keeptime.currentMonth].setEnabled(true);
+	  //  manyGUIs[Keeptime.currentMonth].setVisible(true);
+	  //  manyGUIs[Keeptime.currentMonth].b3.setText(days[Keeptime.currentDay + 1] + ", " + months[Keeptime.currentMonth] + " " + String.valueOf(Keeptime.currentDayofMonth) + " " + Keeptime.currentYear);
 	
 	     }
 

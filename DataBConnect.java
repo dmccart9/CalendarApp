@@ -37,7 +37,7 @@ public class DataBConnect
 		
 		 c = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/xdb","SA", "");
 		 
-	    
+    
 		 if(c != null)
 	    {
 	    	System.out.println("Connected to database");
